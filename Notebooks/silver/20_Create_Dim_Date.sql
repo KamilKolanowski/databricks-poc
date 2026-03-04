@@ -1,5 +1,5 @@
 -- Databricks notebook source
-CREATE TABLE IF NOT EXISTS `databricks-catalog`.silver.DimDate (
+CREATE OR REPLACE TABLE `databricks-catalog`.silver.DimDate (
   CalendarDateId INT,
   CalendarDate DATE,
   FiscalYear INT,
@@ -31,7 +31,7 @@ WITH date_range AS (
     )) AS Date
 )
 SELECT
-    CAST(DATE_FORMAT(Date, 'yyyyMMdd') AS INT)          AS CalendarDateId,
+    CAST(DATE_FORMAT(Date, 'yyyyMMdd') AS INT)           AS CalendarDateId,
     Date                                                 AS CalendarDate,
     YEAR(Date)                                           AS FiscalYear,
     QUARTER(Date)                                        AS FiscalQuarter,
@@ -45,7 +45,7 @@ SELECT
     CONCAT('FY', YEAR(Date))                             AS FiscalYearName,
     WEEKOFYEAR(Date)                                     AS FiscalWeekInYear,
     CEIL(DAYOFMONTH(Date) / 7.0)                         AS FiscalWeekInMonth,
-    MONTH(Date) - ((QUARTER(Date) - 1) * 3)             AS FiscalMonthInQuarter,
+    MONTH(Date) - ((QUARTER(Date) - 1) * 3)              AS FiscalMonthInQuarter,
     MONTH(Date)                                          AS FiscalMonthInYear,
     QUARTER(Date)                                        AS FiscalQuarterInYear
 FROM date_range

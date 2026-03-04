@@ -1,6 +1,5 @@
 -- Databricks notebook source
-CREATE TABLE `databricks-catalog`.silver.DimCustomer (
-  CustomerId BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY,
+CREATE OR REPLACE TABLE `databricks-catalog`.silver.DimCustomer (
   CustomerSourceId STRING NOT NULL, 
   Gender STRING NOT NULL, 
   Age INT NOT NULL, 
@@ -9,7 +8,7 @@ CREATE TABLE `databricks-catalog`.silver.DimCustomer (
 
 -- COMMAND ----------
 
-INSERT OVERWRITE `databricks-catalog`.silver.DimCustomer (CustomerSourceId, Gender, Age)
+INSERT OVERWRITE `databricks-catalog`.silver.DimCustomer
 SELECT
   CustomerId AS CustomerSourceId,
   Gender,
