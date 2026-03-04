@@ -1,5 +1,4 @@
 -- Databricks notebook source
--- DBTITLE 1,CREATE TABLE DimCustomer (fixed)
 CREATE TABLE IF NOT EXISTS `databricks-catalog`.gold.DimCustomer (
   CustomerId BIGINT GENERATED ALWAYS AS IDENTITY,
   CustomerSourceId STRING NOT NULL, 
