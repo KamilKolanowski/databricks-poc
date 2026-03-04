@@ -3,7 +3,7 @@ CREATE OR REPLACE TABLE `databricks-catalog`.silver.DimCustomer (
   CustomerSourceId STRING NOT NULL, 
   Gender STRING NOT NULL, 
   Age INT NOT NULL, 
-  PRIMARY KEY (CustomerId)
+  PRIMARY KEY (CustomerSourceId)
 )
 
 -- COMMAND ----------
