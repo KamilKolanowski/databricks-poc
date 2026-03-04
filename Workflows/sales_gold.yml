@@ -1,0 +1,28 @@
+resources:
+  jobs:
+    sales_gold:
+      name: sales_gold
+      tasks:
+        - task_key: Load_Dim_Customer
+          notebook_task:
+            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/gold/30_Load_Dim_Customer
+            source: WORKSPACE
+        - task_key: Load_Dim_Date
+          notebook_task:
+            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/gold/30_Load_Dim_Date
+            source: WORKSPACE
+        - task_key: Load_Dim_Product_Category
+          notebook_task:
+            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/gold/30_Load_Dim_Product_Category
+            source: WORKSPACE
+        - task_key: Load_Fact_Sales
+          depends_on:
+            - task_key: Load_Dim_Product_Category
+            - task_key: Load_Dim_Date
+            - task_key: Load_Dim_Customer
+          notebook_task:
+            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/gold/30_Load_Fact_Sales
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

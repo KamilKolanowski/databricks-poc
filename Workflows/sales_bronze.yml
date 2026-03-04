@@ -1,0 +1,21 @@
+resources:
+  jobs:
+    sales_bronze:
+      name: sales_bronze
+      tasks:
+        - task_key: Config_Extract_Files
+          notebook_task:
+            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/config/00_Config_Extract_Files
+            base_parameters:
+              file_name: retail_sales_dataset
+              extension: csv
+            source: WORKSPACE
+        - task_key: Create_Bronze_Table
+          depends_on:
+            - task_key: Config_Extract_Files
+          notebook_task:
+            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/bronze/10_Create_Bronze_Fact_Sales
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
