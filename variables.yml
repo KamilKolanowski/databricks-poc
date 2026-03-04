@@ -1,0 +1,5 @@
+variables:
+  notebooks_base_path:
+    description: "Base path for notebooks used in workflow processing"
+    default: "/Workspace/Shared/databricks-poc/files"
+    

@@ -1,0 +1,30 @@
+bundle:
+  name: deploy-repo
+
+include:
+  - variables.yml
+  - Workflows/*.yml
+
+variables:
+  shared_cluster_id:
+    description: Shared interactive cluster ID
+
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace:
+      host: https://dbc-f296da7a-af05.cloud.databricks.com
+      root_path: ~/databricks-poc
+    variables:
+      shared_cluster_id: 4d2ec04f045af269
+
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-f296da7a-af05.cloud.databricks.com
+      root_path: /Shared/databricks-poc
+    run_as:
+      user_name: tanssive@gmail.com
+    variables:
+      shared_cluster_id: 4d2ec04f045af269
