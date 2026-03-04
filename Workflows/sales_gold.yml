@@ -5,15 +5,15 @@ resources:
       tasks:
         - task_key: Load_Dim_Customer
           notebook_task:
-            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/gold/30_Load_Dim_Customer
+            notebook_path: ${var.notebooks_base_path}/Notebooks/gold/30_Load_Dim_Customer
             source: WORKSPACE
         - task_key: Load_Dim_Date
           notebook_task:
-            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/gold/30_Load_Dim_Date
+            notebook_path: ${var.notebooks_base_path}/Notebooks/gold/30_Load_Dim_Date
             source: WORKSPACE
         - task_key: Load_Dim_Product_Category
           notebook_task:
-            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/gold/30_Load_Dim_Product_Category
+            notebook_path: ${var.notebooks_base_path}/Notebooks/gold/30_Load_Dim_Product_Category
             source: WORKSPACE
         - task_key: Load_Fact_Sales
           depends_on:
@@ -21,7 +21,7 @@ resources:
             - task_key: Load_Dim_Date
             - task_key: Load_Dim_Customer
           notebook_task:
-            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/gold/30_Load_Fact_Sales
+            notebook_path: ${var.notebooks_base_path}/Notebooks/gold/30_Load_Fact_Sales
             source: WORKSPACE
       queue:
         enabled: true

@@ -5,7 +5,7 @@ resources:
       tasks:
         - task_key: Config_Extract_Files
           notebook_task:
-            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/config/00_Config_Extract_Files
+            notebook_path: ${var.notebooks_base_path}/Notebooks/config/00_Config_Extract_Files
             base_parameters:
               file_name: retail_sales_dataset
               extension: csv
@@ -14,7 +14,7 @@ resources:
           depends_on:
             - task_key: Config_Extract_Files
           notebook_task:
-            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/bronze/10_Create_Bronze_Fact_Sales
+            notebook_path: ${var.notebooks_base_path}/Notebooks/bronze/10_Create_Bronze_Fact_Sales
             source: WORKSPACE
       queue:
         enabled: true

@@ -5,19 +5,19 @@ resources:
       tasks:
         - task_key: Create_Dim_Customer
           notebook_task:
-            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/silver/20_Create_Dim_Customer
+            notebook_path: ${var.notebooks_base_path}/Notebooks/silver/20_Create_Dim_Customer
             source: WORKSPACE
         - task_key: Create_Dim_Date
           notebook_task:
-            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/silver/20_Create_Dim_Date
+            notebook_path: ${var.notebooks_base_path}/Notebooks/silver/20_Create_Dim_Date
             source: WORKSPACE
         - task_key: Create_Dim_Product_Category
           notebook_task:
-            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/silver/20_Create_Dim_Product_Category
+            notebook_path: ${var.notebooks_base_path}/Notebooks/silver/20_Create_Dim_Product_Category
             source: WORKSPACE
         - task_key: Create_Fact_Sales
           notebook_task:
-            notebook_path: /Workspace/Users/tanssive@gmail.com/databricks-poc/Notebooks/silver/20_Create_Fact_Sales
+            notebook_path: ${var.notebooks_base_path}/Notebooks/silver/20_Create_Fact_Sales
             source: WORKSPACE
       queue:
         enabled: true
