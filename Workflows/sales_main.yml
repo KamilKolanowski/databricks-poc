@@ -5,16 +5,16 @@ resources:
       tasks:
         - task_key: Bronze_Layer
           run_job_task:
-            job_id: 440970516412040
+            job_id: ${resources.jobs.sales_bronze.id}
         - task_key: Silver_Layer
           depends_on:
             - task_key: Bronze_Layer
           run_job_task:
-            job_id: 252367554032843
+            job_id: ${resources.jobs.sales_silver.id}
         - task_key: Gold_Layer
           depends_on:
             - task_key: Silver_Layer
           run_job_task:
-            job_id: 397658995065363
+            job_id: ${resources.jobs.sales_gold.id}
       queue:
         enabled: true
