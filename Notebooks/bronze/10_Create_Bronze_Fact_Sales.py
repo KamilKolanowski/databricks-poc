@@ -7,11 +7,13 @@
 
 dbutils.widgets.text("file_name", "")
 dbutils.widgets.text("extension", "")
+dbutils.widgets.text("source_table", "")
 
 # COMMAND ----------
 
 file_name = dbutils.widgets.get("file_name")
 extension = dbutils.widgets.get("extension")
+source_table = dbutils.widgets.get("extension")
 
 # COMMAND ----------
 
@@ -22,13 +24,11 @@ extension = dbutils.widgets.get("extension")
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC CREATE CATALOG IF NOT EXISTS `databricks-catalog`;
-# MAGIC CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`raw`;
-# MAGIC CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`bronze`;
-# MAGIC CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`silver`;
-# MAGIC CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`gold`;
-# MAGIC
+CREATE CATALOG IF NOT EXISTS `databricks-catalog`;
+CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`bronze`;
+CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`silver`;
+CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`gold`;
+
 
 # COMMAND ----------
 
@@ -79,7 +79,7 @@ def get_files(file_name, extension):
         spark.createDataFrame(df, schema=create_schema_for_raw_data())
         .write
         .mode("overwrite")
-        .saveAsTable("`databricks-catalog`.raw.retail_sales")
+        .saveAsTable(f"`databricks-catalog`.bronze.{source_table}")
     )
 
 # COMMAND ----------

@@ -3,18 +3,13 @@ resources:
     sales_bronze:
       name: sales_bronze
       tasks:
-        - task_key: Config_Extract_Files
+        - task_key: Create_Bronze_Table
           notebook_task:
-            notebook_path: ${var.notebooks_base_path}/Notebooks/config/00_Config_Extract_Files
+            notebook_path: ${var.notebooks_base_path}/Notebooks/bronze/10_Create_Bronze_Fact_Sales
             base_parameters:
               file_name: retail_sales_dataset
               extension: csv
-            source: WORKSPACE
-        - task_key: Create_Bronze_Table
-          depends_on:
-            - task_key: Config_Extract_Files
-          notebook_task:
-            notebook_path: ${var.notebooks_base_path}/Notebooks/bronze/10_Create_Bronze_Fact_Sales
+              source_table: RetailSalesData
             source: WORKSPACE
       queue:
         enabled: true
