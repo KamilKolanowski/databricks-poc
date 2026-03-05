@@ -24,11 +24,12 @@ source_table = dbutils.widgets.get("extension")
 
 # COMMAND ----------
 
-CREATE CATALOG IF NOT EXISTS `databricks-catalog`;
-CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`bronze`;
-CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`silver`;
-CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`gold`;
-
+# MAGIC %sql
+# MAGIC CREATE CATALOG IF NOT EXISTS `databricks-catalog`;
+# MAGIC CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`bronze`;
+# MAGIC CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`silver`;
+# MAGIC CREATE SCHEMA IF NOT EXISTS `databricks-catalog`.`gold`;
+# MAGIC
 
 # COMMAND ----------
 
